@@ -10,7 +10,9 @@ public class Client {
         Queue<Object> store = new ConcurrentLinkedQueue<>();
 
         Semaphore producerSemaphore = new Semaphore(6);
+        //Initialized with 6 permits, allowing up to 6 producer threads to enter the critical section simultaneously.
         Semaphore consumerSemaphore = new Semaphore(0);
+        //Initialized with 0 permits, initially blocking all consumer threads until producers produce items.
 
         Producer p1 = new Producer(6, "P1", store, producerSemaphore, consumerSemaphore);
         Producer p2 = new Producer(6, "P2", store, producerSemaphore, consumerSemaphore);
@@ -41,7 +43,6 @@ public class Client {
         t7.start();
         t7.start();
         t8.start();
-
 
     }
 }

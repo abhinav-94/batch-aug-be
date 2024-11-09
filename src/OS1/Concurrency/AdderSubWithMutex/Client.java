@@ -12,13 +12,14 @@ public class Client {
         Subtractor subtractor = new Subtractor(count, lock);
 
         Thread t1 = new Thread(adder);
+        System.out.println("value after adder count " + count.value);
         Thread t2 = new Thread(subtractor);
 
         t1.start();
         t2.start();
 
-        t1.join();
-        t2.join();
+        // t1.join();
+        // t2.join();
         System.out.println("Final value for count " + count.value);
     }
 }

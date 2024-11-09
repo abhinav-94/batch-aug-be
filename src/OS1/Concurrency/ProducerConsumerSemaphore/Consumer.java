@@ -23,7 +23,9 @@ public class Consumer implements Runnable{
     public void run() {
         while(true){
             try {
-                consumerSemaphore.acquire();
+                consumerSemaphore.acquire(); //checks the aquire whether any shirt available based on producer release()
+                //aquire doesn't mean producer has released. consumer is waiting
+                //it resumes once consumer.release() happens
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

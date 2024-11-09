@@ -18,6 +18,8 @@ public class Consumer implements Runnable{
     public void run() {
         while(true){
             synchronized (store) {
+                //here consumer is not able to go inside critical section when one consumer is already there although there are available shirts
+                //to deal with this issue we will use semaphores
                 if (this.store.size() > 0) {
                 System.out.println(this.name + " Removing a shirt " + this.store.size());
                     store.remove();
